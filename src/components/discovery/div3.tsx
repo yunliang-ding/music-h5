@@ -5,6 +5,7 @@ const { Swiper } = Window
 @inject('UI')
 @observer
 class Div3 extends React.Component<any, any> {
+  props: any
   constructor(props) {
     super(props)
   }
@@ -17,10 +18,10 @@ class Div3 extends React.Component<any, any> {
   render() {
     return <div className='app-discovery-body-div3'>
       <div className='app-discovery-body-songlist-title'>
-        推荐歌单
+        {this.props.title}
         </div>
       <div className='app-discovery-body-songlist-tips'>
-        <span>为您精挑细选</span>
+        <span>{this.props.subtitle}</span>
         <button>查看更多</button>
       </div>
       <div className="swiper-container2">
