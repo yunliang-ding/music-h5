@@ -18,7 +18,8 @@
     "react-router": "^3.0.2",
     "weui":"2.2.0",
     "react-weui":"1.2.2",
-    "fastclick":"1.0.6"
+    "fastclick":"1.0.6",
+    "react-slick":"0.25.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",

@@ -1,4 +1,6 @@
-import { ui as UI } from './ui'
+import { ui as UI } from './ui/index'
+import { header as Header } from './header/index'
 export default {
-  UI
+  UI,
+  Header
 }
