@@ -1,8 +1,5 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
-import { Badge } from 'react-weui'
-import 'weui';
-import 'react-weui/build/dist/react-weui.css';
 import './index.less'
 @inject('UI', 'Header')
 @observer
@@ -18,17 +15,30 @@ class Header extends React.Component<any, any> {
     } = this.props.Header
     return <div className='app-header'>
       <div className='app-header-menu'>
-        <i className='iconfont icon-item'></i>
+        <i className='iconfont icon-card-tab-cebianlan'></i>
+        <span className='app-badge' style={{
+          top: 4,
+          right: -4
+        }}>80</span>
       </div>
       <div className='app-header-tab'>
         {
           menus.map((_menu, _index) => {
-            return <span className={_menu.selected ? 'active' : ''} key={_menu.key} onClick={
+            return <span className={_menu.selected ? 'app-header-tab-item active' : 'app-header-tab-item'} key={_menu.key} onClick={
               () => {
                 setMenuSelect(_index) //  设置选中
               }
             }>
               {_menu.label}
+              {
+                _menu.selected && <span className='app-badge' style={{
+                  top: 0,
+                  right: 2,
+                  height: 6,
+                  width: 6,
+                  borderRadius: '50%'
+                }}></span>
+              }
             </span>
           })
         }
