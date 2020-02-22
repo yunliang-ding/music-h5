@@ -24,6 +24,17 @@
     align-items: center;
     .app-header-tab-item{
       position: relative;
+      transition: .1s;
+      border-radius: 50px;
+      width:46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size:15px;
+    }
+    .app-header-tab-item:active{
+      background: #eee;
     }
     span{
       display: block;
@@ -33,7 +44,7 @@
       color: #5c5c5c;
     }
     .active{
-      font-size:15px;
+      font-size:17px;
       color:#111;
       font-weight: 700;
     }

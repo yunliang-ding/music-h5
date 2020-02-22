@@ -1,13 +1,19 @@
 import { observable, action } from 'mobx'
+const hashMapping = {
+  0: 'home',
+  1: 'discovery',
+  2: 'towns',
+  3: 'video'
+}
 class Header {
   @observable menus = [{
     key: Math.random(),
     label: '我的',
-    selected: false
+    selected: true
   }, {
     key: Math.random(),
     label: '发现',
-    selected: true
+    selected: false
   }, {
     key: Math.random(),
     label: '云村',
@@ -24,6 +30,7 @@ class Header {
     this.menus.map((menu, index) => {
       menu.selected = index === _index
     })
+    window.location.hash = hashMapping[_index]
   }
 }
 const header = new Header()

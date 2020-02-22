@@ -10,8 +10,10 @@ class Div1 extends React.Component<any, any> {
   }
   componentDidMount() {
     new Swiper('.swiper-container1', {
-      loop: true,
-      autoplay: true
+      autoplay: true,
+      pagination: {
+        el: '.swiper-pagination',
+      }
     })
   }
   render() {
@@ -31,6 +33,7 @@ class Div1 extends React.Component<any, any> {
             <span className='tips'>独家</span>
           </div>
         </div>
+        <div className="swiper-pagination"></div>
       </div>
     </div>
   }

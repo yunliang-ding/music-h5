@@ -24,7 +24,7 @@ class Header extends React.Component<any, any> {
       <div className='app-header-tab'>
         {
           menus.map((_menu, _index) => {
-            return <span className={_menu.selected ? 'app-header-tab-item active' : 'app-header-tab-item'} key={_menu.key} onClick={
+            return <div className={_menu.selected ? 'app-header-tab-item active' : 'app-header-tab-item'} key={_menu.key} onClick={
               () => {
                 setMenuSelect(_index) //  设置选中
               }
@@ -32,14 +32,14 @@ class Header extends React.Component<any, any> {
               {_menu.label}
               {
                 _menu.selected && <span className='app-badge' style={{
-                  top: 0,
+                  top: 7,
                   right: 2,
                   height: 6,
                   width: 6,
                   borderRadius: '50%'
                 }}></span>
               }
-            </span>
+            </div>
           })
         }
       </div>
