@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
+import { PullRefresh } from '../mobile/pullRefresh/index'
 import { Header } from '../components/header/index';
 import { Footer } from '../components/footer/index';
 import { Home } from '../components/home/index'
@@ -36,24 +37,26 @@ class Layout extends React.Component<any, any> {
       <div className='app-layout-header'>
         <Header />
       </div>
-      <div className='app-layout-content'>
-        <div className="layout-swiper-container">
-          <div className="swiper-wrapper">
-            <div className="swiper-slide" data-hash="home">
-              <Home />
-            </div>
-            <div className="swiper-slide" data-hash="discovery">
-              <Discovery />
-            </div>
-            <div className="swiper-slide" data-hash="towns">
-              <Towns />
-            </div>
-            <div className="swiper-slide" data-hash="video">
-              <Video />
+      <PullRefresh element={`.app-${location.hash === '' ? 'home' : location.hash.substr(1)}`}>
+        <div className='app-layout-content'>
+          <div className="layout-swiper-container">
+            <div className="swiper-wrapper">
+              <div className="swiper-slide" data-hash="home">
+                <Home />
+              </div>
+              <div className="swiper-slide" data-hash="discovery">
+                <Discovery />
+              </div>
+              <div className="swiper-slide" data-hash="towns">
+                <Towns />
+              </div>
+              <div className="swiper-slide" data-hash="video">
+                <Video />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </PullRefresh>
       <div className='app-layout-footer'>
         <Footer />
       </div>

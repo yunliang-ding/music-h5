@@ -24,7 +24,6 @@ class Header extends React.Component<any, any> {
       menus,
       setMenuSelect
     } = this.props.Header
-    console.log(location.hash)
     const home = (location.hash === '#home' || location.hash === '')
     return <div className='app-header'>
       {
