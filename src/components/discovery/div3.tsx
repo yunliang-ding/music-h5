@@ -16,11 +16,11 @@ class Div3 extends React.Component<any, any> {
     })
   }
   render() {
-    return <div className='app-discovery-body-div3'>
-      <div className='app-discovery-body-songlist-title'>
+    return <div className='app-discovery-div3'>
+      <div className='app-discovery-songlist-title'>
         {this.props.title}
         </div>
-      <div className='app-discovery-body-songlist-tips'>
+      <div className='app-discovery-songlist-tips'>
         <span>{this.props.subtitle}</span>
         <button>查看更多</button>
       </div>

@@ -2,7 +2,10 @@ import * as React from "react"
 import { observer, inject } from 'mobx-react'
 import { Header } from '../components/header/index';
 import { Footer } from '../components/footer/index';
-import { Discovery } from '../pages/discovery/index'
+import { Home } from '../components/home/index'
+import { Discovery } from '../components/discovery/index'
+import { Towns } from '../components/towns/index'
+import { Video } from '../components/video/index'
 const Window: any = window
 const { Swiper } = Window
 import './index.less'
@@ -37,16 +40,16 @@ class Layout extends React.Component<any, any> {
         <div className="layout-swiper-container">
           <div className="swiper-wrapper">
             <div className="swiper-slide" data-hash="home">
-              home
+              <Home />
             </div>
             <div className="swiper-slide" data-hash="discovery">
               <Discovery />
             </div>
             <div className="swiper-slide" data-hash="towns">
-              towns
+              <Towns />
             </div>
             <div className="swiper-slide" data-hash="video">
-              video
+              <Video />
             </div>
           </div>
         </div>

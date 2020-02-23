@@ -17,7 +17,7 @@ class Div1 extends React.Component<any, any> {
     })
   }
   render() {
-    return <div className='app-discovery-body-div1'>
+    return <div className='app-discovery-div1'>
       <div className="swiper-container1">
         <div className="swiper-wrapper">
           <div className="swiper-slide">

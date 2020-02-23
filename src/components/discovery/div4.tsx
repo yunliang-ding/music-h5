@@ -79,11 +79,11 @@ class Div4 extends React.Component<any, any> {
     })
   }
   render() {
-    return <div className='app-discovery-body-div4'>
-      <div className='app-discovery-body-div4-title'>
+    return <div className='app-discovery-div4'>
+      <div className='app-discovery-div4-title'>
         {this.props.title}
       </div>
-      <div className='app-discovery-body-div4-tips'>
+      <div className='app-discovery-div4-tips'>
         <span>{this.props.subtitle}</span>
         <button>播放全部</button>
       </div>

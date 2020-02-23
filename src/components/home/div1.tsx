@@ -1,12 +1,12 @@
 import * as React from "react"
-class Div5 extends React.Component<any, any> {
+class Div1 extends React.Component<any, any> {
   constructor(props) {
     super(props)
   }
   render() {
-    return <div className='app-discovery-div5'>
+    return <div className='app-home-div1'>
       到底啦～
     </div>
   }
 }
-export { Div5 }
+export { Div1 }

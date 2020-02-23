@@ -8,12 +8,12 @@ import { Div5 } from './div5'
 import './index.less'
 @inject('UI')
 @observer
-class DiscoveryBody extends React.Component<any, any> {
+class Discovery extends React.Component<any, any> {
   constructor(props) {
     super(props)
   }
   render() {
-    return <div className='app-discovery-body'>
+    return <div className='app-discovery'>
       <Div1 />
       <Div2 />
       <Div3 title='推荐歌单' subtitle='为您精挑细选' />
@@ -26,4 +26,4 @@ class DiscoveryBody extends React.Component<any, any> {
     </div>
   }
 }
-export { DiscoveryBody }
+export { Discovery }
