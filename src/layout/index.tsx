@@ -25,7 +25,7 @@ class Layout extends React.Component<any, any> {
         watchState: true,
       },
       on:{
-        slideChangeTransitionEnd: function(){
+        slideChangeTransitionStart: function(){
           setMenuSelect(this.activeIndex)
         }
       }

@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-between;
   height:inherit;
+  position: relative;
   .app-header-menu{
     width:40px;
     height:inherit;
@@ -34,7 +35,7 @@
       font-size:15px;
     }
     .app-header-tab-item:active{
-      background: #eee;
+      opacity: 0.8;
     }
     span{
       display: block;
@@ -55,9 +56,24 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    z-index:99;
     .iconfont{
       font-size: 20px;
       color:#5c5c5c;
     }
   }
+}
+.app-home-back{
+  transition: 1s;
+  background: #888;
+  background-image: url('http://p1.music.126.net/o3G7lWrGBQAvSRt3UuApTw==/2002210674180201.jpg');
+  width: 102%;
+  left: -1%;
+  height:100vh;
+  position:absolute;
+  background-size: 100%;
+  filter: brightness(0.2);
+}
+.app-home-back-move{
+  background-position: center -100px;
 }

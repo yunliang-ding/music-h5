@@ -32,10 +32,6 @@ const config = {
     rules: [{
       test: /\.(js|jsx)$/,
       exclude: /(node_modules)/,
-      // include: [
-      //   path.resolve(__dirname, './node_modules/_weui.js@1.2.1@weui.js'),
-      //   path.resolve(__dirname, './node_modules/_fastclick@1.0.6@fastclick')
-      // ],
       use: {
         loader: 'babel-loader',
         options: {
@@ -62,8 +58,6 @@ const config = {
     },{
       test: /\.(less|css)$/,
       include: [ //样式只应用到这两个文件夹下面的css文件中
-        path.resolve(__dirname, './node_modules/_react-weui@1.2.2@react-weui/build/dist/react-weui.css'),
-        path.resolve(__dirname, './node_modules/_weui@2.2.0@weui/dist/style'),
         path.resolve(__dirname, './src'),
       ],
       use: [
