@@ -1,0 +1,65 @@
+.app-table{
+  height:100%;
+  width:100%;
+  .app-table-list{
+    padding:0 16px;
+  }
+  .app-table-list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0;
+    .app-table-list-item-left{
+      width: 50px;
+      height: 100%;
+      img{
+        height:40px;
+        width:40px;
+        border-radius: 4px;
+      }
+    }
+    .app-table-list-item-center{
+      width:calc(~'100% - 100px');
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .app-table-list-item-center-left{
+        width:calc(~'100% - 40px');
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        .app-table-list-item-center-name{
+          font-size:15px;
+          color:#333;
+          margin-bottom:4px;
+        }
+        .app-table-list-item-center-artists{
+          font-size:12px;
+          color:#9a9a9a;
+        }
+      }
+      .app-table-list-item-center-right{
+        width:30px;
+        .iconfont{
+          font-size:28px;
+          color:#9a9a9a;
+        }
+      }
+    }
+    .app-table-list-item-right{
+      width: 50px;
+      height: 100%;
+      text-align: right;
+      .iconfont{
+        font-size:28px;
+        color:#9a9a9a;
+        position: relative;
+        left:8px;
+      }
+    }
+  }
+}

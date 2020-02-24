@@ -13,8 +13,8 @@ class PullRefresh extends React.Component<any, any> {
   }
   componentDidMount() {
     const { element } = this.props
+    console.log('element', element)
     let scroller:any = $("#scroller")
-    let arrow:any = $("#arrow")
     let pull_refresh:any = $("#pull_refresh")
     //注入transform属性
     Window.Transform(pull_refresh, true);
@@ -32,12 +32,12 @@ class PullRefresh extends React.Component<any, any> {
         if ((scroller.translateY < 0 && value > 0) || value < 0) { // 超出时候可以往下拉, 支持往上推
           scroller.translateY = value;
         }
-        if(pull_refresh.translateY > 10){
+        if(pull_refresh.translateY > 30){
           pull_refresh.style.zIndex = 10
         } else {
           pull_refresh.style.zIndex = -1
         }
-        $('.pull').style.transform = `rotate(${value * 2}deg)`
+        $('.pull').style.transform = `rotate(${value * 4}deg)`
       },
       touchMove: function (evt, value) {
         if (value > 60) { // 提示释放刷新
@@ -59,11 +59,12 @@ class PullRefresh extends React.Component<any, any> {
     function mockRequest(at) {
       setTimeout(function () {
         $('.loading').style.display = 'none'
+        pull_refresh.translateY = 0;
         setTimeout(()=>{
           $('.pull').style.display = 'flex'
-        }, 100)
-        pull_refresh.translateY = 0;
+        }, 500)
         at.to(at.value);
+        // window.location.reload()
       }, 1000);
     }
   }
