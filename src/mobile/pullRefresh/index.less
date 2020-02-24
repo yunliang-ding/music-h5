@@ -35,15 +35,16 @@
     text-align: center;
     color: var(--theme-color);
     position: absolute;
-    z-index: 10;
-    top: -20px;
+    z-index: -1;
+    top: 50px;
     width: 100%;
   }
   .pull {
     position: relative;
     top: -30px;
+    transition: 1s;
   }
-  .pull, .release, .loading{
+  .pull, .loading{
     display:flex;
     align-items: center;
     justify-content: center;
@@ -74,6 +75,49 @@
       font-size:24px;
       font-weight: 700;
     }
+  }
+  .loading {
+    width: 100%;
+    height: 40px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -60px;
+  }
+  .loading span {
+    display: inline-block;
+    width: 6px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--theme-color);
+    animation: load 1s ease infinite;
+    margin-right: 2px;
+  }
+  @keyframes load {
+    0%,
+    100% {
+      height: 14px;
+      background: var(--theme-color);
+      opacity: 1;
+    }
+    50% {
+      height: 28px;
+      background: var(--theme-color);
+      opacity: 0.6;
+    }
+  }
+  .loading span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .loading span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  .loading span:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  .loading span:nth-child(5) {
+    animation-delay: 0.8s;
   }
 }
 @keyframes refresh-move {

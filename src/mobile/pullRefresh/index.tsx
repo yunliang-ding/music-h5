@@ -23,25 +23,32 @@ class PullRefresh extends React.Component<any, any> {
       touch: "#wrapper",//反馈触摸的dom
       vertical: true,//不必需，默认是true代表监听竖直方向touch
       target: scroller, //运动的对象
-      property: "translateY",  //被滚动的属性
+      property: "transform",  //被滚动的属性
       value: 0,
       min: window.innerHeight - $(element).offsetHeight - 90, //不必需,滚动属性的最小值
       max: 0, //不必需,滚动属性的最大值
       change: function (value) {
         pull_refresh.translateY = value;
+        if ((scroller.translateY < 0 && value > 0) || value < 0) { // 超出时候可以往下拉, 支持往上推
+          scroller.translateY = value;
+        }
+        if(pull_refresh.translateY > 10){
+          pull_refresh.style.zIndex = 10
+        } else {
+          pull_refresh.style.zIndex = -1
+        }
+        $('.pull').style.transform = `rotate(${value * 2}deg)`
       },
       touchMove: function (evt, value) {
-        if (value > 70) { // 提示释放刷新
-          $('.pull').style.display = 'none'
-          $('.release').style.display = 'flex'
+        if (value > 60) { // 提示释放刷新
+          $('.pull').style.transform = `rotate(360deg)`
         }
       },
       touchEnd: function (evt, value) {
         $('.pull').style.display = 'none'
-        $('.release').style.display = 'none'
-        if (value > 70) {
+        if (value > 60) {
           $('.loading').style.display = 'flex'
-          this.to(60);
+          this.to(40);
           mockRequest(this);
           return false;
         } else {
@@ -52,10 +59,12 @@ class PullRefresh extends React.Component<any, any> {
     function mockRequest(at) {
       setTimeout(function () {
         $('.loading').style.display = 'none'
-        $('.pull').style.display = 'flex'
+        setTimeout(()=>{
+          $('.pull').style.display = 'flex'
+        }, 100)
         pull_refresh.translateY = 0;
         at.to(at.value);
-      }, 2000);
+      }, 1000);
     }
   }
   render() {
@@ -66,15 +75,12 @@ class PullRefresh extends React.Component<any, any> {
             <i className='iconfont icon-shuaxin1111'></i>
           </span>
         </div>
-        <div className="release" style={{display: 'none'}}>
-          <span className='refresh-loadding'>
-            <i className='iconfont icon-shuaxin1111'></i>
-          </span>
-        </div>
         <div className="loading" style={{display: 'none'}}>
-          <span className='animation-loadding'>
-            <i className='iconfont icon-Loading-'></i>
-          </span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
       <div id="wrapper">

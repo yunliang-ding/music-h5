@@ -34,7 +34,7 @@ class Div3 extends React.Component<any, any> {
             data && data.map(item=>{
               return <div className="swiper-slide" key={item.id}>
                 <img src={item.picUrl + '?param=600y600'} />
-                <span>{item.name}{item.copywriter}</span>
+                <span>{item.copywriter}</span>
               </div>
             })
           }

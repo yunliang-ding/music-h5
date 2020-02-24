@@ -34,6 +34,8 @@ class Layout extends React.Component<any, any> {
           // 页面定位到顶部
           $('#scroller').translateY = 0
           $('#pull_refresh').translateY = 0
+          // 取消loading态
+          $('.loading').style.display = 'none'
         }
       }
     })
