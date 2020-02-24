@@ -2,20 +2,24 @@ import * as React from "react"
 import { observer, inject } from 'mobx-react'
 const Window: any = window
 const { Swiper } = Window
-@inject('UI')
+@inject('UI', 'Discovery')
 @observer
 class Div3 extends React.Component<any, any> {
   props: any
   constructor(props) {
     super(props)
   }
-  componentDidMount() {
-    new Swiper('.swiper-container2', {
+  componentDidUpdate() {
+    new Swiper('.' + this.props.className, {
       slidesPerView: 3.2,
       spaceBetween: 10
     })
   }
   render() {
+    const {
+      data,
+      className
+    } = this.props
     return <div className='app-discovery-div3'>
       <div className='app-discovery-songlist-title'>
         {this.props.title}
@@ -24,32 +28,16 @@ class Div3 extends React.Component<any, any> {
         <span>{this.props.subtitle}</span>
         <button>查看更多</button>
       </div>
-      <div className="swiper-container2">
+      <div className={"swiper-container2 " + className}>
         <div className="swiper-wrapper">
-          <div className="swiper-slide">
-            <img src='http://p1.music.126.net/SbC8FdLw-PywMmnD35iRKg==/109951164725561024.jpg?param=1000y1000' />
-            <span>为您精挑细选为您精挑细选为您精挑细选为您精挑细选为您精挑细选为您精挑细选</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p2.music.126.net/fqYWuUrCBUwQ8kPHOEOZ1g==/109951163002904769.jpg?param=1000y1000' />
-            <span>为您精挑细选为您精挑细选为您精挑细选</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p2.music.126.net/hsJ_i6lOWwsBU_3r-j0i9Q==/109951164239520119.jpg?param=1000y1000' />
-            <span>为您精挑细选为您精挑细选为您精挑细选</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p1.music.126.net/SbC8FdLw-PywMmnD35iRKg==/109951164725561024.jpg?param=1000y1000' />
-            <span>为您精挑细选为您精挑细选为您精挑细选</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p2.music.126.net/fqYWuUrCBUwQ8kPHOEOZ1g==/109951163002904769.jpg?param=1000y1000' />
-            <span>为您精挑细选为您精挑细选为您精挑细选</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p2.music.126.net/hsJ_i6lOWwsBU_3r-j0i9Q==/109951164239520119.jpg?param=1000y1000' />
-            <span>为您精挑细选为您精挑细选为您精挑细选</span>
-          </div>
+          {
+            data && data.map(item=>{
+              return <div className="swiper-slide" key={item.id}>
+                <img src={item.picUrl + '?param=600y600'} />
+                <span>{item.name}{item.copywriter}</span>
+              </div>
+            })
+          }
         </div>
       </div>
     </div>

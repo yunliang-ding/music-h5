@@ -7,9 +7,10 @@ import { Home } from '../components/home/index'
 import { Discovery } from '../components/discovery/index'
 import { Towns } from '../components/towns/index'
 import { Video } from '../components/video/index'
+import './index.less'
 const Window: any = window
 const { Swiper } = Window
-import './index.less'
+const $: any = document.querySelector.bind(document)
 @inject('UI', 'Header')
 @observer
 class Layout extends React.Component<any, any> {
@@ -28,6 +29,11 @@ class Layout extends React.Component<any, any> {
       on:{
         slideChangeTransitionStart: function(){
           setMenuSelect(this.activeIndex)
+        },
+        slideChangeTransitionEnd: function(){
+          // 页面定位到顶部
+          $('#scroller').translateY = 0
+          $('#pull_refresh').translateY = 0
         }
       }
     })

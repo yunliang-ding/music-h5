@@ -2,13 +2,15 @@ import * as React from "react"
 import { observer, inject } from 'mobx-react'
 const Window: any = window
 const { Swiper } = Window
-@inject('UI')
+@inject('UI', 'Discovery')
 @observer
 class Div1 extends React.Component<any, any> {
+  props: any
   constructor(props) {
     super(props)
   }
-  componentDidMount() {
+  queryBanner = async () => {
+    await this.props.Discovery.queryBanner()
     new Swiper('.swiper-container1', {
       autoplay: true,
       pagination: {
@@ -16,22 +18,24 @@ class Div1 extends React.Component<any, any> {
       }
     })
   }
+  componentDidMount() {
+    this.queryBanner()
+  }
   render() {
+    const {
+      banners
+    } = this.props.Discovery
     return <div className='app-discovery-div1'>
       <div className="swiper-container1">
         <div className="swiper-wrapper">
-          <div className="swiper-slide">
-            <img src='http://p1.music.126.net/SbC8FdLw-PywMmnD35iRKg==/109951164725561024.jpg?param=1000y1000' />
-            <span className='tips'>独家</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p2.music.126.net/fqYWuUrCBUwQ8kPHOEOZ1g==/109951163002904769.jpg?param=1000y1000' />
-            <span className='tips'>独家</span>
-          </div>
-          <div className="swiper-slide">
-            <img src='http://p2.music.126.net/hsJ_i6lOWwsBU_3r-j0i9Q==/109951164239520119.jpg?param=1000y1000' />
-            <span className='tips'>独家</span>
-          </div>
+          {
+            banners.map(banner=>{
+              return <div className="swiper-slide" key={banner.targetId}>
+                <img src={banner.pic} />
+                <span className='tips'>{banner.typeTitle}</span>
+              </div>
+            })
+          }
         </div>
         <div className="swiper-pagination"></div>
       </div>

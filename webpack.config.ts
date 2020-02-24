@@ -81,7 +81,14 @@ const config = {
     port: 8080,
     hot: true,
     compress: true,
-    contentBase: './www'
+    contentBase: './www',
+    proxy: [{
+      context: ['/api'],
+      target: 'http://49.233.85.54:3000',
+      pathRewrite: { '^/api': '' },
+      changeOrigin: true,
+      secure: true
+    }]
   },
   optimization: process.env.NODE_ENV === "production" ? {
     minimize: true
