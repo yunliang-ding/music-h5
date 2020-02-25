@@ -35,7 +35,7 @@ class Table extends React.Component<any, any> {
                 </div>
               </div>
               <div className='app-table-list-item-right'>
-                <i className='iconfont icon-gengduo-copy'></i>
+                <i className='iconfont icon-more'></i>
               </div>
             </div>
           })

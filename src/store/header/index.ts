@@ -1,11 +1,12 @@
 import { observable, action } from 'mobx'
 const hashMapping = {
-  0: 'home',
-  1: 'discovery',
-  2: 'towns',
-  3: 'video'
+  0: '#/home',
+  1: '#/discovery',
+  2: '#/towns',
+  3: '#/video'
 }
 class Header {
+  @observable router = '#/home'
   @observable menus = [{
     key: Math.random(),
     label: '我的',
@@ -23,6 +24,9 @@ class Header {
     label: '视频',
     selected: false
   }]
+  @action setRouter = (router:string) => {
+    this.router = router
+  }
   @action setMenus = (_index: number, _key, _value): void => {
     this.menus[_index][_key] = _value
   }
@@ -30,7 +34,8 @@ class Header {
     this.menus.map((menu, index) => {
       menu.selected = index === _index
     })
-    window.location.hash = hashMapping[_index]
+    this.router = hashMapping[_index]
+    location.hash = hashMapping[_index]
   }
 }
 const header = new Header()

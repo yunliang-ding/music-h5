@@ -1,0 +1,55 @@
+.app-album{
+  height: 100%;;
+  width:100%;
+  background: #888;
+  .app-album-footer{
+    height:45px;
+    width:100%;
+    background: #fff;
+  }
+  .app-album-body{
+    height:calc(~'100% - 45px');
+    width:100%;
+    .app-album-div1{
+      height:180px;
+      width:100%;
+    }
+    .app-album-div2{
+      height:calc(~'100% - 180px');
+      width:100%;
+      background: #fff;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      .app-album-div2-header{
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        .app-album-div2-header-left,.app-album-div2-header-right{
+          width: 100px;
+          display: flex;
+          align-items: center;
+          .iconfont{
+            color:#5c5c5c;
+            font-size:20px;
+            padding-right:6px;
+          }
+          span{
+            font-size:13px;
+            color:#333;
+          }
+        }
+        .app-album-div2-header-right{
+          justify-content: flex-end;
+        }
+      }
+      .app-album-div2-body{
+        overflow: auto;
+        height:calc(~'100% - 45px');
+        width:100%;
+      }
+    }
+  }
+}
+  

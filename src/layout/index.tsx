@@ -11,6 +11,12 @@ import './index.less'
 const Window: any = window
 const { Swiper } = Window
 const $: any = document.querySelector.bind(document)
+const hahsMapping = {
+  '#/home': 'home',
+  '#/discovery': 'discovery',
+  '#/towns': 'towns',
+  '#/video': 'video'
+}
 @inject('UI', 'Header')
 @observer
 class Layout extends React.Component<any, any> {
@@ -20,7 +26,8 @@ class Layout extends React.Component<any, any> {
   }
   componentDidMount() {
     const {
-      setMenuSelect
+      setMenuSelect,
+      router
     } = this.props.Header
     new Swiper('.layout-swiper-container', {
       hashNavigation: {
@@ -45,20 +52,20 @@ class Layout extends React.Component<any, any> {
       <div className='app-layout-header'>
         <Header />
       </div>
-      <PullRefresh element={`.app-${location.hash === '' ? 'home' : location.hash.substr(1)}`}>
+      <PullRefresh element={`.app-${hahsMapping[location.hash]}`}>
         <div className='app-layout-content'>
           <div className="layout-swiper-container">
             <div className="swiper-wrapper">
-              <div className="swiper-slide" data-hash="home">
+              <div className="swiper-slide" data-hash="/home">
                 <Home />
               </div>
-              <div className="swiper-slide" data-hash="discovery">
+              <div className="swiper-slide" data-hash="/discovery">
                 <Discovery />
               </div>
-              <div className="swiper-slide" data-hash="towns">
+              <div className="swiper-slide" data-hash="/towns">
                 <Towns />
               </div>
-              <div className="swiper-slide" data-hash="video">
+              <div className="swiper-slide" data-hash="/video">
                 <Video />
               </div>
             </div>

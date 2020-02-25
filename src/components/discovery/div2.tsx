@@ -9,7 +9,11 @@ class Div2 extends React.Component<any, any> {
   render() {
     return <div className='app-discovery-div2'>
       <div className='app-discovery-menus-item'>
-        <div className='app-discovery-menus-item-logo'>
+        <div className='app-discovery-menus-item-logo' onClick={
+          () => {
+            window.location.hash = '/album'
+          }
+        }>
           <i className='iconfont icon-rili1' style={{ fontSize: 28 }}></i>
           <span>22</span>
         </div>

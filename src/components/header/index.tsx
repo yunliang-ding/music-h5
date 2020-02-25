@@ -22,9 +22,11 @@ class Header extends React.Component<any, any> {
   render() {
     const {
       menus,
-      setMenuSelect
+      router,
+      setMenuSelect,
     } = this.props.Header
-    const home = (location.hash === '#home' || location.hash === '')
+    console.log(router)
+    const home = router === '#/home'
     return <div className='app-header'>
       {
         home && <img className='app-home-back' />

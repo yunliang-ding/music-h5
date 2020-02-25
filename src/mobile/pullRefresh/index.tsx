@@ -13,7 +13,6 @@ class PullRefresh extends React.Component<any, any> {
   }
   componentDidMount() {
     const { element } = this.props
-    console.log('element', element)
     let scroller:any = $("#scroller")
     let pull_refresh:any = $("#pull_refresh")
     //注入transform属性
@@ -38,6 +37,11 @@ class PullRefresh extends React.Component<any, any> {
           pull_refresh.style.zIndex = -1
         }
         $('.pull').style.transform = `rotate(${value * 4}deg)`
+        if(pull_refresh.translateY < 0){
+          $('.app-header').classList.add('app-header-shadow')
+        } else {
+          $('.app-header').classList.remove('app-header-shadow')
+        }
       },
       touchMove: function (evt, value) {
         if (value > 60) { // 提示释放刷新
