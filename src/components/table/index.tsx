@@ -1,7 +1,7 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
 import './index.less'
-@inject('UI')
+@inject('UI', 'Song')
 @observer
 class Table extends React.Component<any, any> {
   props: any
@@ -12,11 +12,18 @@ class Table extends React.Component<any, any> {
     const {
       data
     } = this.props
+    const {
+      playSong
+    } = this.props.Song
     return <div className='app-table'>
       <div className='app-table-list'>
         {
           data.map(item => {
-            return <div className='app-table-list-item' key={item.id}>
+            return <div className='app-table-list-item' key={item.id} onClick={
+              () => {
+                playSong(item.id)
+              }
+            }>
               <div className='app-table-list-item-left'>
                 <img src={item.album.picUrl + '?param=100y100'} />
               </div>

@@ -1,22 +1,32 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
 import './index.less'
-@inject('UI')
+@inject('UI', 'Song')
 @observer
 class Footer extends React.Component<any, any> {
+  props: any
   constructor(props) {
     super(props)
   }
   render() {
-    const name = "直觉"
-    const lyrics = "李学仁"
+    const {
+      song: {
+        name,
+        artist,
+        playing,
+        dt,
+        url,
+        picUrl,
+        progress
+      }
+    } = this.props.Song
     return <div className='app-footer'>
       <div className='app-footer-img'>
-        <img src='http://p2.music.126.net/BY0NRYf8SfOR1oZSHcrsaw==/109951163748110192.jpg?param=400y400' />
+        {picUrl && <img src={picUrl + '?param=60y60'} />}
       </div>
       <div className='app-footer-song'>
         <span className='app-footer-song-name'>{name}</span>
-        <span className='app-footer-song-lyrics'>{lyrics}</span>
+        <span className='app-footer-song-lyrics'>{artist}</span>
       </div>
       <div className='app-footer-tools'>
         <i className='iconfont icon-bofang'></i>
