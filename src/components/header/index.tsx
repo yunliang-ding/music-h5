@@ -25,7 +25,6 @@ class Header extends React.Component<any, any> {
       router,
       setMenuSelect,
     } = this.props.Header
-    console.log(router)
     const home = router === '#/home'
     return <div className='app-header'>
       {

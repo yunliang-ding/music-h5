@@ -1,11 +1,12 @@
 .app-album{
   height: 100%;;
   width:100%;
-  background: #888;
   .app-album-footer{
     height:45px;
     width:100%;
     background: #fff;
+    z-index: 999;
+    position: relative;
   }
   .app-album-body{
     height:calc(~'100% - 45px');
@@ -13,10 +14,59 @@
     .app-album-div1{
       height:180px;
       width:100%;
+      position: relative;
+      .app-album-div1-header{
+        height: 45px;
+        width: 100%;
+        position: relative;
+        z-index: 99;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        background: rgba(151, 150, 150, 0.5);
+        .iconfont{
+          color:#fff;
+          font-size: 20px;
+          position: absolute;
+          left:10px;
+        }
+        span{
+          color: #fff;
+          margin-left:10px;
+          font-size:18px;
+        }
+      }
+      img{
+        position: absolute;
+        width: 102%;
+        left: -1%;
+        top: -40vw;
+        height: 100vw;
+        filter: brightness(0.4) blur(1px);
+        transition: 0.5s;
+      }
+      .app-album-div1-tag{
+        position: absolute;
+        z-index: 99;
+        bottom: 20px;
+        left: 10px;
+        .app-album-div1-tag-day{
+          color: #fff;
+          font-size: 38px;
+        }
+        .app-album-div1-tag-month{
+          color: #9a9a9a;
+          font-size: 15px;
+        }
+      }
     }
     .app-album-div2{
       height:calc(~'100% - 180px');
       width:100%;
+      -index: 999;
+      position: relative;
       background: #fff;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
@@ -33,11 +83,22 @@
           .iconfont{
             color:#5c5c5c;
             font-size:20px;
-            padding-right:6px;
+            padding-right:8px;
           }
           span{
             font-size:13px;
             color:#333;
+          }
+        }
+        .app-album-div2-header-left{
+          .iconfont{
+            font-size:18px;
+            position:relative;
+            padding-right:10px;
+            top:1px;
+          }
+          span{
+            font-size:15px;
           }
         }
         .app-album-div2-header-right{

@@ -18,7 +18,7 @@ class Table extends React.Component<any, any> {
           data.map(item => {
             return <div className='app-table-list-item' key={item.id}>
               <div className='app-table-list-item-left'>
-                <img src={item.album.picUrl + '?param=300y300'} />
+                <img src={item.album.picUrl + '?param=100y100'} />
               </div>
               <div className='app-table-list-item-center'>
                 <div className='app-table-list-item-center-left'>
