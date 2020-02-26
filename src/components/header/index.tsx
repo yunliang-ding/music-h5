@@ -26,6 +26,7 @@ class Header extends React.Component<any, any> {
       setMenuSelect,
     } = this.props.Header
     const home = router === '#/home'
+    console.log(router)
     return <div className='app-header'>
       {
         home && <img className='app-home-back' />

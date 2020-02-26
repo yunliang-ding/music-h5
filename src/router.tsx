@@ -13,12 +13,12 @@ class AppRouter extends React.Component {
         <Redirect from='/' to='home'/>
         <Route path='/' component={Layout}>
           <IndexRoute component={Home} />
-          <Route path={'home'} component={Home} />
-          <Route path={'discovery'} component={Discovery} />
-          <Route path={'towns'} component={Towns} />
-          <Route path={'video'} component={Video} />
+          <Route path='home' component={Home} />
+          <Route path='discovery' component={Discovery} />
+          <Route path='towns' component={Towns} />
+          <Route path='video' component={Video} />
+          <Route path='album' component={Album} />
         </Route>
-        <Route path='/album' component={Album} />
       </Router>
     )
   }

@@ -7,15 +7,16 @@ import { Home } from '../components/home/index'
 import { Discovery } from '../components/discovery/index'
 import { Towns } from '../components/towns/index'
 import { Video } from '../components/video/index'
+import { Album } from '../components/album/index'
 import './index.less'
 const Window: any = window
 const { Swiper } = Window
-const $: any = document.querySelector.bind(document)
-const hahsMapping = {
+const hashMapping = {
   '#/home': 'home',
   '#/discovery': 'discovery',
   '#/towns': 'towns',
-  '#/video': 'video'
+  '#/video': 'video',
+  '#/album': 'album'
 }
 @inject('UI', 'Header')
 @observer
@@ -29,50 +30,54 @@ class Layout extends React.Component<any, any> {
       setMenuSelect,
       router
     } = this.props.Header
-    new Swiper('.layout-swiper-container', {
+    let mySwiper = new Swiper('.layout-swiper-container', {
       hashNavigation: {
         watchState: true,
       },
-      on:{
-        slideChangeTransitionStart: function(){
+      on: {
+        touchStart: function () {
+        },
+        slideChangeTransitionStart: function () {
           setMenuSelect(this.activeIndex)
         },
-        slideChangeTransitionEnd: function(){
-          
+        slideChangeTransitionEnd: function () {
         }
       }
     })
   }
   render() {
-    return <PullRefresh element={`.app-${hahsMapping[location.hash]}`}>
-      <div className='app-layout'>
-        <div className='app-layout-header'>
-          <Header />
-        </div>
-          <div className='app-layout-content'>
-            <div className="layout-swiper-container">
-              <div className="swiper-wrapper">
-                <div className="swiper-slide" data-hash="/home">
-                  <Home />
-                </div>
-                <div className="swiper-slide" data-hash="/discovery">
-                  <Discovery />
-                </div>
-                <div className="swiper-slide" data-hash="/towns">
-                  <Towns />
-                </div>
-                <div className="swiper-slide" data-hash="/video">
-                  <Video />
-                </div>
+    const hash = hashMapping[location.hash]
+    return <div className='app-layout'>
+      <div className='app-layout-header'>
+        <Header />
+      </div>
+      <div className='app-layout-content'>
+        <PullRefresh element={`.app-${hash}`}>
+          <div className="layout-swiper-container">
+            <div className="swiper-wrapper">
+              <div className="swiper-slide" data-hash="/home">
+                <Home />
+              </div>
+              <div className="swiper-slide" data-hash="/discovery">
+                <Discovery />
+              </div>
+              <div className="swiper-slide" data-hash="/towns">
+                <Towns />
+              </div>
+              <div className="swiper-slide" data-hash="/video">
+                <Video />
+              </div>
+              <div className="swiper-slide" data-hash="/album">
+                <Album />
               </div>
             </div>
           </div>
-        
-        <div className='app-layout-footer'>
-          <Footer />
-        </div>
+        </PullRefresh>
       </div>
-    </PullRefresh>
+      <div className='app-layout-footer'>
+        <Footer />
+      </div>
+    </div>
   }
 }
 export { Layout }

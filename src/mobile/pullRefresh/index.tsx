@@ -32,7 +32,7 @@ class PullRefresh extends React.Component<any, any> {
   }
   touchend = () => {
     if (this.end === 120) { // 开始刷新操作
-      $('.mobile_pull_refresh_loading_iconfont').style.top = 120
+      $('.mobile_pull_refresh_loading_iconfont').style.top = 80
       $('.mobile_pull_refresh_loading_iconfont').classList.remove('icon-shuaxin1111')
       $('.mobile_pull_refresh_loading_iconfont').classList.add('icon-loading')
       $('.mobile_pull_refresh_loading_iconfont').style.transition = `.5s`
@@ -68,7 +68,7 @@ class PullRefresh extends React.Component<any, any> {
     this.bind($(element), "touchend", this.touchend)
   }
   render(){
-    return <div className='mobile_pull_refresh'>
+    return <div className='mobile_pull_refresh' style={this.props.style}>
       <div className='mobile_pull_refresh_loading'>
         <i className='iconfont icon-shuaxin1111 mobile_pull_refresh_loading_iconfont'></i>
       </div>
