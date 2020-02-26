@@ -22,11 +22,11 @@ class Footer extends React.Component<any, any> {
     } = this.props.Song
     return <div className='app-footer'>
       <div className='app-footer-img'>
-        {picUrl && <img src={picUrl + '?param=60y60'} />}
+        {picUrl ? <img src={picUrl + '?param=60y60'} /> : <i className='iconfont icon-dian'></i>}
       </div>
       <div className='app-footer-song'>
-        <span className='app-footer-song-name'>{name}</span>
-        <span className='app-footer-song-lyrics'>{artist}</span>
+        <span className='app-footer-song-name'>{name || '...'}</span>
+        <span className='app-footer-song-lyrics'>{artist || '.....'}</span>
       </div>
       <div className='app-footer-tools'>
         <i className='iconfont icon-bofang'></i>

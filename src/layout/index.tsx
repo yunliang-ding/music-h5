@@ -38,44 +38,41 @@ class Layout extends React.Component<any, any> {
           setMenuSelect(this.activeIndex)
         },
         slideChangeTransitionEnd: function(){
-          // 页面定位到顶部
-          $('#scroller').translateY = 0
-          $('#pull_refresh').translateY = 0
-          // 取消loading态
-          $('.loading').style.display = 'none'
+          
         }
       }
     })
   }
   render() {
-    return <div className='app-layout'>
-      <div className='app-layout-header'>
-        <Header />
-      </div>
-      <PullRefresh element={`.app-${hahsMapping[location.hash]}`}>
-        <div className='app-layout-content'>
-          <div className="layout-swiper-container">
-            <div className="swiper-wrapper">
-              <div className="swiper-slide" data-hash="/home">
-                <Home />
-              </div>
-              <div className="swiper-slide" data-hash="/discovery">
-                <Discovery />
-              </div>
-              <div className="swiper-slide" data-hash="/towns">
-                <Towns />
-              </div>
-              <div className="swiper-slide" data-hash="/video">
-                <Video />
+    return <PullRefresh element={`.app-${hahsMapping[location.hash]}-div1`}>
+      <div className='app-layout'>
+        <div className='app-layout-header'>
+          <Header />
+        </div>
+          <div className='app-layout-content'>
+            <div className="layout-swiper-container">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide" data-hash="/home">
+                  <Home />
+                </div>
+                <div className="swiper-slide" data-hash="/discovery">
+                  <Discovery />
+                </div>
+                <div className="swiper-slide" data-hash="/towns">
+                  <Towns />
+                </div>
+                <div className="swiper-slide" data-hash="/video">
+                  <Video />
+                </div>
               </div>
             </div>
           </div>
+        
+        <div className='app-layout-footer'>
+          <Footer />
         </div>
-      </PullRefresh>
-      <div className='app-layout-footer'>
-        <Footer />
       </div>
-    </div>
+    </PullRefresh>
   }
 }
 export { Layout }
