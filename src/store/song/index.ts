@@ -25,11 +25,14 @@ class Song {
     this.song.progress = 0
     this.song.comment = []
   }
+  @action setSongByKey = (key, value) => {
+    this.song[key] = value
+  }
   @action playSong = async (songId: string) => {
     const song = await this.querySongDetailById(songId)
     if(song){
       const url = await this.querySongUrlById(songId)
-      song[url] = url
+      song.url = url
       this.setSong(song)
     }
   }

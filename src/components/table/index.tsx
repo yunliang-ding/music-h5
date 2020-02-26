@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
+import { Loading } from '../../mobile'
 import './index.less'
 @inject('UI', 'Song')
 @observer
@@ -15,7 +16,7 @@ class Table extends React.Component<any, any> {
     const {
       playSong
     } = this.props.Song
-    return <div className='app-table'>
+    return data.length > 0 ? <div className='app-table'>
       <div className='app-table-list'>
         {
           data.map(item => {
@@ -48,7 +49,7 @@ class Table extends React.Component<any, any> {
           })
         }
       </div>
-    </div>
+    </div> : <Loading style={{width: '100%', height: '100%'}} message='拼命加载中..' />
   }
 }
 export { Table }

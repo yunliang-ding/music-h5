@@ -51,11 +51,7 @@ class Discovery {
     const { code, albums } = await get(`/api/album/newest`, {})
     if(code == 200){
       runInAction(() => {
-        this.newestAlbum = albums.map(item=>{
-          item.name = ''
-          item.copywriter = item.company
-          return item
-        })
+        this.newestAlbum = albums
       })
     }
   }

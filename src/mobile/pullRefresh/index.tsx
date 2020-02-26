@@ -24,6 +24,11 @@ class PullRefresh extends React.Component<any, any> {
       $('.mobile_pull_refresh_loading_iconfont').style.top = this.end
       $('.mobile_pull_refresh_loading_iconfont').style.transform = `rotate(${this.end * 1.5}deg)` 
     }
+    if($(element).scrollTop > 50){
+      $('.app-header').classList.add('app-header-shadow')
+    } else {
+      $('.app-header').classList.remove('app-header-shadow')
+    }
   }
   touchend = () => {
     if (this.end === 120) { // 开始刷新操作
