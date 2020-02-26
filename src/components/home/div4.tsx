@@ -83,14 +83,12 @@ class Div4 extends React.Component<any, any> {
           label: '创建新歌单',
           icon: <i className='iconfont icon-jia' style={{color:'#5c5c5c', fontSize:20}}></i>,
           click:(e) => {
-            console.log(e)
           }
         },{
           key: Math.random(),
           label: '歌单管理',
           icon: <i className='iconfont icon-guanli' style={{color:'#5c5c5c', fontSize:22}}></i>,
           click:(e) => {
-            console.log(e)
           }
         }]
       } />

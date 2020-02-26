@@ -1,8 +1,9 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
-@inject('UI')
+@inject('UI', 'Header')
 @observer
 class Div2 extends React.Component<any, any> {
+  props: any
   constructor(props) {
     super(props)
   }
@@ -12,6 +13,7 @@ class Div2 extends React.Component<any, any> {
         <div className='app-discovery-menus-item-logo' onClick={
           () => {
             window.location.hash = '/album'
+            this.props.Header.setNavTitle('每日推荐')
           }
         }>
           <i className='iconfont icon-rili1' style={{ fontSize: 28 }}></i>

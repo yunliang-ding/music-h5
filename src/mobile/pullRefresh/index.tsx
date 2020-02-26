@@ -4,6 +4,7 @@ import './index.less'
 class PullRefresh extends React.Component<any, any> {
   props: any
   start: any = 0
+  startX: any = 0
   end: any = 0
   constructor(props) {
     super(props)
@@ -15,10 +16,11 @@ class PullRefresh extends React.Component<any, any> {
     $('.mobile_pull_refresh_loading_iconfont').style.transition = `0s`
     var touch = event.targetTouches[0];
     this.start = touch.pageY
+    this.startX = touch.pageX
   }
   touchmove = (e) => {
     let { element } = this.props
-    if(e.targetTouches.length > 0 && $(element).scrollTop === 0){
+    if(e.targetTouches.length > 0 && $(element).scrollTop === 0 && Math.abs(e.touches[0].pageX - this.startX) < 10){
       this.end = e.touches[0].pageY - this.start
       this.end = this.end > 120 ? 120 : this.end
       $('.mobile_pull_refresh_loading_iconfont').style.top = this.end

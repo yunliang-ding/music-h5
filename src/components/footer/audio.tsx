@@ -19,7 +19,6 @@ class Audio extends React.Component<any, any> {
       // this.props.Song.playerNext()
     }
     $('#audio').onerror = (e) => {
-      console.log(e)
     }
   }
   render() {
@@ -28,7 +27,6 @@ class Audio extends React.Component<any, any> {
         url
       }
     } = this.props.Song
-    console.log('render')
     return <div style={{ display: 'none' }}>
       <video src={url} autoPlay={true} id='audio' />
     </div>

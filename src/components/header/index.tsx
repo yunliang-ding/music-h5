@@ -2,6 +2,7 @@ import * as React from "react"
 import { observer, inject } from 'mobx-react'
 import './index.less'
 const $:any = document.querySelector.bind(document)
+const Window: any = window
 @inject('UI', 'Header')
 @observer
 class Header extends React.Component<any, any> {
@@ -24,52 +25,67 @@ class Header extends React.Component<any, any> {
       menus,
       router,
       setMenuSelect,
+      navTitle
     } = this.props.Header
     const home = router === '#/home'
-    console.log(router)
+    const singlePage = ['#/home','#/discovery','#/towns','#/video'].indexOf(router) === -1
     return <div className='app-header'>
       {
         home && <img className='app-home-back' />
       }
-      <div className='app-header-menu'>
-        <i className='iconfont icon-card-tab-cebianlan'></i>
-        <span className='app-badge' style={{
-          top: 4,
-          right: -4
-        }}>80</span>
-      </div>
-      <div className='app-header-tab'>
-        {
-          menus.map((_menu, _index) => {
-            return <div
-              style={{
-                color: home ? '#fff' : '#111'
-              }}
-              className={_menu.selected ? 'app-header-tab-item active' : 'app-header-tab-item'} 
-              key={_menu.key} 
-              onClick={
-                () => {
-                  setMenuSelect(_index) //  设置选中
-                }
-              }
-            >
-              {_menu.label}
-              {
-                _menu.selected && <span className='app-badge' style={{
-                  top: 7,
-                  right: 2,
-                  height: 6,
-                  width: 6,
-                  borderRadius: '50%'
-                }}></span>
-              }
-            </div>
-          })
-        }
-      </div>
-      <div className='app-header-search'>
-        <i className='iconfont icon--search'></i>
-      </div>
+      {
+        singlePage ? <div className='app-header-nav'>
+          <i className='iconfont icon-back' onClick={
+            () => {
+              Window.mySwiper.allowSlideNext= true
+              Window.mySwiper.allowSlidePrev= true
+              window.history.back()
+            }
+          }></i>
+          {navTitle}
+          <i className='iconfont icon-more'></i>
+        </div> : [
+          <div className='app-header-menu'>
+            <i className='iconfont icon-card-tab-cebianlan'></i>
+            <span className='app-badge' style={{
+              top: 4,
+              right: -4
+            }}>80</span>
+          </div>,
+          <div className='app-header-tab'>
+            {
+              menus.map((_menu, _index) => {
+                return <div
+                  style={{
+                    color: home ? '#fff' : '#111'
+                  }}
+                  className={_menu.selected ? 'app-header-tab-item active' : 'app-header-tab-item'} 
+                  key={_menu.key} 
+                  onClick={
+                    () => {
+                      setMenuSelect(_index) //  设置选中
+                    }
+                  }
+                >
+                  {_menu.label}
+                  {
+                    _menu.selected && <span className='app-badge' style={{
+                      top: 7,
+                      right: 2,
+                      height: 6,
+                      width: 6,
+                      borderRadius: '50%'
+                    }}></span>
+                  }
+                </div>
+              })
+            }
+          </div>,
+          <div className='app-header-search'>
+            <i className='iconfont icon--search'></i>
+          </div>
+        ]
+      }
     </div>
   }
 }

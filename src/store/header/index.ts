@@ -8,6 +8,7 @@ const hashMapping = {
 }
 class Header {
   @observable router = '#/home'
+  @observable navTitle = localStorage.getItem('navTitle')
   @observable menus = [{
     key: Math.random(),
     label: '我的',
@@ -27,6 +28,10 @@ class Header {
   }]
   @action setRouter = (router:string) => {
     this.router = router
+  }
+  @action setNavTitle = (navTitle:string) => {
+    this.navTitle = navTitle
+    localStorage.setItem('navTitle', navTitle)
   }
   @action setMenus = (_index: number, _key, _value): void => {
     this.menus[_index][_key] = _value

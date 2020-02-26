@@ -9,6 +9,7 @@ import { Towns } from '../components/towns/index'
 import { Video } from '../components/video/index'
 import { Album } from '../components/album/index'
 import './index.less'
+const $:any = document.querySelector.bind(document)
 const Window: any = window
 const { Swiper } = Window
 const hashMapping = {
@@ -16,7 +17,7 @@ const hashMapping = {
   '#/discovery': 'discovery',
   '#/towns': 'towns',
   '#/video': 'video',
-  '#/album': 'album'
+  '#/album': 'album-div1'
 }
 @inject('UI', 'Header')
 @observer
@@ -30,17 +31,28 @@ class Layout extends React.Component<any, any> {
       setMenuSelect,
       router
     } = this.props.Header
-    let mySwiper = new Swiper('.layout-swiper-container', {
+    Window.mySwiper = new Swiper('.layout-swiper-container', {
       hashNavigation: {
         watchState: true,
       },
       on: {
-        touchStart: function () {
+        touchStart: function(){
+          if(this.activeIndex === 3 ){ // 最多切换到第4张slide
+            Window.mySwiper.allowSlideNext= false
+          } else if(this.activeIndex > 3) { // 左右都不能切换
+            Window.mySwiper.allowSlideNext = false
+            Window.mySwiper.allowSlidePrev = false
+          } else { // 随便切换
+            Window.mySwiper.allowSlideNext= true
+            Window.mySwiper.allowSlidePrev= true
+          }
         },
         slideChangeTransitionStart: function () {
           setMenuSelect(this.activeIndex)
         },
         slideChangeTransitionEnd: function () {
+          $('.app-discovery').scrollTop = 0
+          $('.app-header').classList.remove('app-header-shadow')
         }
       }
     })
