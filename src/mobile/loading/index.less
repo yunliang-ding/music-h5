@@ -1,0 +1,26 @@
+.mobile-loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  .mobile-loading-icon{
+    font-size: 30px;
+    color: var(--theme-color);
+    animation: load 1s infinite linear;
+  }
+  .mobile-loading-message{
+    font-size: 15px;
+    color:#555;
+    margin-top: 8px;
+  }
+}
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  

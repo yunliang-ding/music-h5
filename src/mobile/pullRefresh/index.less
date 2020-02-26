@@ -1,17 +1,17 @@
-.pull_self_refresh{
+.mobile_pull_refresh{
   position: relative;
   height:100%;
   width:100%;
-  .pull_self_refresh_loading{
+  .mobile_pull_refresh_loading{
     position: absolute;
     top: -50px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index:9;
+    z-index:999;
     height:50px;
-    .pull_self_refresh_loading_iconfont{
+    .mobile_pull_refresh_loading_iconfont{
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -22,7 +22,7 @@
       font-size:28px;
       color:var(--theme-color);
       position: absolute;
-      z-index:9999;
+      box-shadow: 0 0 4px 0px #9a9a9a;
     }
   }
 }

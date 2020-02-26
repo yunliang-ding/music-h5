@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { Div1 } from './div1'
 import { Div2 } from './div2'
 import { Footer } from '../footer/index'
-import { PullRefresh } from '../../mobile/pullRefresh/index'
+import { PullRefresh } from '../../mobile'
 import './index.less'
 @inject('UI', 'Table')
 @observer

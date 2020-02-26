@@ -1,6 +1,6 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
-import { PullRefresh } from '../mobile/pullRefresh/index'
+import { PullRefresh } from '../mobile'
 import { Header } from '../components/header/index';
 import { Footer } from '../components/footer/index';
 import { Home } from '../components/home/index'
