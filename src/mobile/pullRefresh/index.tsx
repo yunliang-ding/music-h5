@@ -12,20 +12,22 @@ class PullRefresh extends React.Component<any, any> {
     element.addEventListener(type, callback, false);
   }
   touchstart = (event) => {
+    $('.pull_self_refresh_loading_iconfont').style.transition = `0s`
     var touch = event.targetTouches[0];
     this.start = touch.pageY
   }
   touchmove = (e) => {
-    if(e.targetTouches.length > 0){
+    let { element } = this.props
+    if(e.targetTouches.length > 0 && $(element).scrollTop === 0){
       this.end = e.touches[0].pageY - this.start
-      this.end = this.end > 90 ? 90 : this.end
+      this.end = this.end > 120 ? 120 : this.end
+      $('.pull_self_refresh_loading_iconfont').style.top = this.end
+      $('.pull_self_refresh_loading_iconfont').style.transform = `rotate(${this.end * 1.5}deg)` 
     }
-    $('.pull_self_refresh_loading').style.top = this.end
-    $('.pull_self_refresh_loading_iconfont').style.transform = `rotate(${this.end * 1.5}deg)` 
   }
   touchend = () => {
-    if (this.end === 90) { // 开始刷新操作
-      $('.pull_self_refresh_loading').style.top = 50
+    if (this.end === 120) { // 开始刷新操作
+      $('.pull_self_refresh_loading_iconfont').style.top = 100
       $('.pull_self_refresh_loading_iconfont').style.transition = `.5s`
       $('.pull_self_refresh_loading_iconfont').style.animation = 'refresh-animation .8s linear infinite'
       setTimeout(() => {
@@ -36,9 +38,12 @@ class PullRefresh extends React.Component<any, any> {
     }
   }
   clear = () => {
-    $('.pull_self_refresh_loading').style.top = -50
+    $('.pull_self_refresh_loading_iconfont').style.transition = `.5s`
+    $('.pull_self_refresh_loading_iconfont').style.top = -50
     $('.pull_self_refresh_loading_iconfont').style.animation = ''
     $('.pull_self_refresh_loading_iconfont').style.transform = `rotate(0deg)` 
+    this.end = 0
+    this.start = 0
   }
   componentDidUpdate (){
     let { element } = this.props // 下拉的对象

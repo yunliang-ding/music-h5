@@ -44,7 +44,7 @@ class Layout extends React.Component<any, any> {
     })
   }
   render() {
-    return <PullRefresh element={`.app-${hahsMapping[location.hash]}-div1`}>
+    return <PullRefresh element={`.app-${hahsMapping[location.hash]}`}>
       <div className='app-layout'>
         <div className='app-layout-header'>
           <Header />
