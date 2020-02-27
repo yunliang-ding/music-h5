@@ -1,6 +1,6 @@
 import * as React from "react"
-const $:any = document.querySelector.bind(document)
 import './index.less'
+const $:any = document.querySelector.bind(document)
 class PullRefresh extends React.Component<any, any> {
   props: any
   start: any = 0
@@ -20,7 +20,7 @@ class PullRefresh extends React.Component<any, any> {
   }
   touchmove = (e) => {
     let { element } = this.props
-    if(e.targetTouches.length > 0 && $(element).scrollTop === 0 && Math.abs(e.touches[0].pageX - this.startX) < 10){
+    if(e.targetTouches.length > 0 && $(element).scrollTop === 0 && Math.abs(e.touches[0].pageX - this.startX) < 40){
       this.end = e.touches[0].pageY - this.start
       this.end = this.end > 120 ? 120 : this.end
       $('.mobile_pull_refresh_loading_iconfont').style.top = this.end
