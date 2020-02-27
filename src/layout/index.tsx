@@ -8,6 +8,7 @@ import { Discovery } from '../components/discovery/index'
 import { Towns } from '../components/towns/index'
 import { Video } from '../components/video/index'
 import { Album } from '../components/album/index'
+import { Playlist } from '../components/playlist/index'
 import './index.less'
 const $:any = document.querySelector.bind(document)
 const Window: any = window
@@ -17,7 +18,8 @@ const hashMapping = {
   '#/discovery': 'discovery',
   '#/towns': 'towns',
   '#/video': 'video',
-  '#/album': 'album-div1'
+  '#/album': 'album-div1',
+  '#/playlist': 'playlist-div1'
 }
 @inject('UI', 'Header')
 @observer
@@ -81,6 +83,9 @@ class Layout extends React.Component<any, any> {
               </div>
               <div className="swiper-slide" data-hash="/album">
                 <Album />
+              </div>
+              <div className="swiper-slide" data-hash="/playlist">
+                <Playlist />
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import * as React from "react"
 import { observer, inject } from 'mobx-react'
 const Window: any = window
 const { Swiper } = Window
-@inject('UI')
+@inject('UI', 'Song')
 @observer
 class Div4 extends React.Component<any, any> {
   props: any
@@ -30,6 +30,12 @@ class Div4 extends React.Component<any, any> {
       key: Math.random(),
       song: data.slice(6,9)
     }
+    const {
+      song:{
+        id
+      },
+      playSong
+    } = this.props.Song
     return <div className='app-discovery-div4'>
       <div className='app-discovery-div4-title'>
         {this.props.title}
@@ -57,7 +63,11 @@ class Div4 extends React.Component<any, any> {
                         <span className='discovery-song-info'>{_song.song.album.company}</span>
                       </div>
                       <div className='discovery-song-right'>
-                        <i className='iconfont icon-bofang1'></i>
+                        <i className={id === _song.id ? 'iconfont icon-2' : 'iconfont icon-bofang1'} onClick={
+                          () => {
+                            playSong(_song.id)
+                          }
+                        }></i>
                       </div>
                     </div>
                   })

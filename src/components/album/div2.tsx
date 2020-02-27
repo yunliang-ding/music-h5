@@ -14,8 +14,8 @@ tableHeight: number
   }
   componentDidMount() {
     this.props.Table.queryRecommendSong()
-    $('.app-album-div1-tag').style.bottom = 20
-    $('.app-album-div2').style.top = 0
+    $('.app-album-div1-tag').style.bottom = 40
+    $('.app-album-div2').style.top = -20
     this.tableHeight = Number.parseInt(window.getComputedStyle($('.app-album-div2-body')).height)
   }
   render() {
@@ -48,8 +48,8 @@ tableHeight: number
               $('.app-album-div2').style.top = -90
               $('.app-album-div2-body').style.height = this.tableHeight + 90 
             } else { // 下拉
-              $('.app-album-div1-tag').style.bottom = 20
-              $('.app-album-div2').style.top = 0
+              $('.app-album-div1-tag').style.bottom = 40
+              $('.app-album-div2').style.top = -20
               $('.app-album-div2-body').style.height = 'calc(100% - 45px)'
             }
           }

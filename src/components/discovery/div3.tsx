@@ -2,7 +2,7 @@ import * as React from "react"
 import { observer, inject } from 'mobx-react'
 const Window: any = window
 const { Swiper } = Window
-@inject('UI', 'Discovery')
+@inject('UI', 'Discovery', 'Header', 'Table')
 @observer
 class Div3 extends React.Component<any, any> {
   props: any
@@ -32,7 +32,14 @@ class Div3 extends React.Component<any, any> {
         <div className="swiper-wrapper">
           {
             data && data.map(item=>{
-              return <div className="swiper-slide" key={item.id}>
+              return <div className="swiper-slide" key={item.id} onClick={
+                () => {
+                  location.hash = `/playlist`
+                  localStorage.setItem('playlistId', item.id)
+                  this.props.Table.queryPlaylist(localStorage.getItem('playlistId'))
+                  this.props.Header.setNavTitle('歌单')
+                }
+              }>
                 <img src={item.picUrl + '?param=600y600'} />
                 <span>{item.name}</span>
               </div>

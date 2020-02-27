@@ -13,9 +13,13 @@
     height:calc(~'100% - 45px');
     width:100%;
     .app-album-div1{
-      height:180px;
+      height:200px;
       width:100%;
       position: relative;
+      background-size: cover;
+      filter: brightness(0.7);
+      background-position: top;
+      animation: backImg-animation 40s linear infinite;
       img{
         position: absolute;
         width: 102%;
@@ -42,7 +46,7 @@
       }
     }
     .app-album-div2{
-      height:calc(~'100% - 180px');
+      height:calc(~'100% - 200px');
       width:100%;
       position: relative;
       background: #fff;

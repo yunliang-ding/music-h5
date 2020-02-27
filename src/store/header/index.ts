@@ -4,7 +4,8 @@ const hashMapping = {
   1: '#/discovery',
   2: '#/towns',
   3: '#/video',
-  4: '#/album'
+  4: '#/album',
+  5: '#/playlist'
 }
 class Header {
   @observable router = '#/home'

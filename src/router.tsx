@@ -6,6 +6,7 @@ import { Discovery } from './components/discovery/index'
 import { Towns } from './components/towns/index'
 import { Video } from './components/video/index'
 import { Album } from './components/album/index'
+import { Playlist } from './components/playlist/index'
 class AppRouter extends React.Component {
   render() {
     return (
@@ -18,6 +19,7 @@ class AppRouter extends React.Component {
           <Route path='towns' component={Towns} />
           <Route path='video' component={Video} />
           <Route path='album' component={Album} />
+          <Route path='playlist' component={Playlist} />
         </Route>
       </Router>
     )
