@@ -10,6 +10,7 @@ class PullRefresh extends React.Component<any, any> {
     super(props)
   }
   bind = (element, type, callback) => {
+    element = element || $('.mobile_pull_refresh')
     element.addEventListener(type, callback, false);
   }
   touchstart = (event) => {
@@ -20,13 +21,14 @@ class PullRefresh extends React.Component<any, any> {
   }
   touchmove = (e) => {
     let { element } = this.props
-    if(e.targetTouches.length > 0 && $(element).scrollTop === 0 && Math.abs(e.touches[0].pageX - this.startX) < 40){
+    let elementDom = $(element) || $('.mobile_pull_refresh')
+    if(e.targetTouches.length > 0 && elementDom.scrollTop === 0 && Math.abs(e.touches[0].pageX - this.startX) < 40){
       this.end = e.touches[0].pageY - this.start
       this.end = this.end > 120 ? 120 : this.end
       $('.mobile_pull_refresh_loading_iconfont').style.top = this.end
       $('.mobile_pull_refresh_loading_iconfont').style.transform = `rotate(${this.end * 1.5}deg)` 
     }
-    if($(element).scrollTop > 50){
+    if(elementDom.scrollTop > 50){
       $('.app-header').classList.add('app-header-shadow')
     } else {
       $('.app-header').classList.remove('app-header-shadow')

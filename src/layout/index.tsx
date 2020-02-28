@@ -9,15 +9,12 @@ import { Towns } from '../components/towns/index'
 import { Video } from '../components/video/index'
 import { Album } from '../components/album/index'
 import { Playlist } from '../components/playlist/index'
+import { Loading } from '../mobile'
 import './index.less'
 const $:any = document.querySelector.bind(document)
 const Window: any = window
 const { Swiper } = Window
-const hashMapping = {
-  '#/home': 'home',
-  '#/discovery': 'discovery',
-  '#/towns': 'towns',
-  '#/video': 'video',
+const PullRefreshMapping = {
   '#/album': 'album-div1',
   '#/playlist': 'playlist-div1'
 }
@@ -53,39 +50,46 @@ class Layout extends React.Component<any, any> {
           setMenuSelect(this.activeIndex)
         },
         slideChangeTransitionEnd: function () {
-          $('.app-discovery').scrollTop = 0
+          if($('.app-discovery')){
+            $('.app-discovery').scrollTop = 0
+          }
           $('.app-header').classList.remove('app-header-shadow')
         }
       }
     })
   }
   render() {
-    const hash = hashMapping[location.hash]
+    Window.loadHome = Window.loadHome || location.hash === '#/home'
+    Window.loadDiscovery = Window.loadDiscovery || location.hash === '#/discovery'
+    Window.loadTowns = Window.loadTowns || location.hash === '#/towns'
+    Window.loadVideo = Window.loadVideo || location.hash === '#/video'
+    Window.loadAlbum = Window.loadAlbum || location.hash === '#/album'
+    Window.loadPlaylist = Window.loadPlaylist || location.hash === '#/playlist'
     return <div className='app-layout'>
       <div className='app-layout-header'>
         <Header />
       </div>
       <div className='app-layout-content'>
-        <PullRefresh element={`.app-${hash}`}>
+        <PullRefresh element={`.app-${PullRefreshMapping[location.hash]}`}>
           <div className="layout-swiper-container">
             <div className="swiper-wrapper">
               <div className="swiper-slide" data-hash="/home">
-                <Home />
+                { Window.loadHome ? <Home /> : <Loading /> }
               </div>
               <div className="swiper-slide" data-hash="/discovery">
-                <Discovery />
+                { Window.loadDiscovery ? <Discovery /> : <Loading /> }
               </div>
               <div className="swiper-slide" data-hash="/towns">
-                <Towns />
+                { Window.loadTowns ? <Towns /> : <Loading /> }
               </div>
               <div className="swiper-slide" data-hash="/video">
-                <Video />
+                { Window.loadVideo ? <Video /> : <Loading /> }
               </div>
               <div className="swiper-slide" data-hash="/album">
-                <Album />
+                { Window.loadAlbum ? <Album /> : <Loading /> }
               </div>
               <div className="swiper-slide" data-hash="/playlist">
-                <Playlist />
+                { Window.loadPlaylist ? <Playlist /> : <Loading /> }
               </div>
             </div>
           </div>
