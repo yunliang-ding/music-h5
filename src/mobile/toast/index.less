@@ -1,0 +1,33 @@
+.mobile-toast{
+  position: fixed;
+  top: 200;
+  width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  left: calc(50% - 50px);
+  background: rgba(138, 134, 134, 0.38);
+  color: #fff;
+  border-radius: 8px;
+  .mobile-toast-icon{
+    font-size: 30px;
+    color: var(--theme-color);
+    animation: load 1s infinite linear;
+  }
+  .mobile-toast-message{
+    font-size: 13px;
+    color:#fff;
+    margin-top: 8px;
+  }
+}
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  

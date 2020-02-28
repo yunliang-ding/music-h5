@@ -2,7 +2,7 @@ import * as React from "react"
 import { Table } from '../table/index'
 import { observer, inject } from 'mobx-react'
 const $:any = document.querySelector.bind(document)
-@inject('UI', 'Table')
+@inject('UI', 'Table', 'Song')
 @observer
 class Div2 extends React.Component<any, any> {
   props: any
@@ -22,6 +22,11 @@ tableHeight: number
     const {
       recommendSong
     } = this.props.Table
+    const {
+      song:{
+        id
+      }
+    } = this.props.Song
     return <div className='app-album-div2'>
       <div className='app-album-div2-header'>
         <div className='app-album-div2-header-left'>
@@ -55,7 +60,7 @@ tableHeight: number
           }
         }
       }>
-        <Table data={recommendSong} />
+        <Table data={recommendSong} showImg playSongId={id} />
       </div>
     </div>
   }

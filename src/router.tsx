@@ -11,9 +11,9 @@ class AppRouter extends React.Component {
   render() {
     return (
       <Router history={hashHistory}>
-        <Redirect from='/' to='home'/>
+        <Redirect from='/' to='discovery'/>
         <Route path='/' component={Layout}>
-          <IndexRoute component={Home} />
+          <IndexRoute component={Discovery} />
           <Route path='home' component={Home} />
           <Route path='discovery' component={Discovery} />
           <Route path='towns' component={Towns} />

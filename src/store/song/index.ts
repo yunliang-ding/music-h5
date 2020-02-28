@@ -24,6 +24,7 @@ class Song {
     this.song.lyric = ''
     this.song.progress = 0
     this.song.comment = []
+    this.song = {...this.song} // render
   }
   @action setSongByKey = (key, value) => {
     this.song[key] = value

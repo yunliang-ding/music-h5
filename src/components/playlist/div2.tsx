@@ -15,7 +15,8 @@ class Div2 extends React.Component<any, any> {
   render() {
     const {
       data,
-      shareCount
+      shareCount,
+      playSongId
     } = this.props
     return <div className='app-playlist-div2'>
       <div className='app-playlist-div2-header'>
@@ -45,14 +46,14 @@ class Div2 extends React.Component<any, any> {
             if( this.end < 0 ){ // 上滑
               $('.app-playlist-div2').style.top = -220
               $('.app-playlist-div2-body').style.height = this.tableHeight + 220 
-            } else { // 下拉
+            } else if($('.app-playlist-div2-body').scrollTop === 0) { // 下拉
               $('.app-playlist-div2').style.top = 0
               $('.app-playlist-div2-body').style.height = 'calc(100% - 45px)'
             }
           }
         }
       }>
-        <Table data={data} />
+        <Table data={data} showImg={false} playSongId={playSongId} />
       </div>
     </div>
   }

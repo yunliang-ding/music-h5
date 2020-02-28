@@ -12,7 +12,7 @@ class Div1 extends React.Component<any, any> {
       coverImgUrl
     } = this.props
     return <div className='app-playlist-div1'>
-      { coverImgUrl && <img src={coverImgUrl} className='app-playlist-div1-back'/> }
+      { coverImgUrl && <img src={coverImgUrl + '?param=300y300'} className='app-playlist-div1-back'/> }
       <div className='app-playlist-div1-wapper'>
         <div className='app-playlist-div1-wapper-top'>
           <div className='app-playlist-div1-wapper-left'>
@@ -25,8 +25,9 @@ class Div1 extends React.Component<any, any> {
               }
             </div>
             <div className='app-playlist-div1-wapper-right-creater'>
-              { creator.avatarUrl && <img src={creator.avatarUrl} /> }
+              { creator.avatarUrl && <img src={creator.avatarUrl + '?param=100y100'} /> }
               { creator.nickname && <span>{creator.nickname}</span> }
+              { creator.nickname && <i className='iconfont icon-you'></i> }
             </div>
             <div className='app-playlist-div1-wapper-right-desc'>
               {

@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { Div1 } from './div1'
 import { Div2 } from './div2'
 import './index.less'
-@inject('UI', 'Table')
+@inject('UI', 'Table', 'Song')
 @observer
 class Playlist extends React.Component<any, any> {
   props: any
@@ -26,10 +26,15 @@ class Playlist extends React.Component<any, any> {
         shareCount
       }
     } = this.props.Table
+    const {
+      song:{
+        id
+      }
+    } = this.props.Song
     return <div className='app-playlist'>
       <div className='app-playlist-body'>
         <Div1 name={name} coverImgUrl={coverImgUrl} description={description} creator={creator} />
-        <Div2 data={data} shareCount={shareCount} />
+        <Div2 data={data} shareCount={shareCount} playSongId={id} />
       </div>
     </div>
   }

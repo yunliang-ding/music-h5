@@ -6,7 +6,7 @@ class Div1 extends React.Component<any, any> {
   }
   render() {
     return <div className='app-towns-div1'>
-      <Alert message='云村暂未开发' />
+      <Alert message='delay' />
     </div>
   }
 }
