@@ -1,18 +1,19 @@
-import * as React from "react"
-const $: any = document.querySelector.bind(document)
 import './index.less'
-class Toast extends React.Component<any, any> {
-  props: any
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return <div className='mobile-toast' style={this.props.style}>
-      <i className='iconfont icon-loading mobile-toast-icon'></i>
-      <div className='mobile-toast-message'>
-        {this.props.message || '加载中'}
+const $: any = document.querySelector.bind(document)
+class Toast {
+  static show(message?: string) {
+    let toast = document.createElement("div");
+    toast.className = 'mobile-toast-container'
+    toast.innerHTML = `<div class='mobile-toast'>
+      <i class='iconfont icon-loading mobile-toast-icon'></i>
+      <div class='mobile-toast-message'>
+        ${message || ''}
       </div>
-    </div>
+    </div>`
+    $('#app').appendChild(toast)
+  }
+  static close() {
+    $('.mobile-toast-container').remove()
   }
 }
 export { Toast }

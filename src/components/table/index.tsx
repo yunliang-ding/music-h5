@@ -1,6 +1,5 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
-import { Toast } from '../../mobile'
 import './index.less'
 @inject('UI', 'Song')
 @observer
@@ -16,10 +15,9 @@ class Table extends React.Component<any, any> {
       showImg
     } = this.props
     const {
-      id,
       playSong
     } = this.props.Song
-    return data.length > 0 ? <div className='app-table'>
+    return<div className='app-table'>
       <div className='app-table-list'>
         {
           data.map((item, _index) => {
@@ -58,7 +56,7 @@ class Table extends React.Component<any, any> {
           })
         }
       </div>
-    </div> : <Toast message='拼命加载中..' />
+    </div>
   }
 }
 export { Table }

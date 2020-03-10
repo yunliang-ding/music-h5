@@ -1,5 +1,6 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
+import { toJS } from 'mobx'
 const Window: any = window
 const { Swiper } = Window
 @inject('UI', 'Discovery', 'Header', 'Table')
@@ -8,6 +9,12 @@ class Div3 extends React.Component<any, any> {
   props: any
   constructor(props) {
     super(props)
+  }
+  componentDidMount (){
+    new Swiper('.' + this.props.className, {
+      slidesPerView: 3.2,
+      spaceBetween: 10
+    })
   }
   componentDidUpdate() {
     new Swiper('.' + this.props.className, {
@@ -20,6 +27,7 @@ class Div3 extends React.Component<any, any> {
       data,
       className
     } = this.props
+    console.log(toJS(data))
     return <div className='app-discovery-div3'>
       <div className='app-discovery-songlist-title'>
         {this.props.title}

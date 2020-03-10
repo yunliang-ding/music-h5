@@ -1,5 +1,6 @@
 import { observable, action, runInAction } from 'mobx'
 import { get } from '../../axios/api'
+import { Toast } from '../../mobile'
 class Table {
   @observable recommendSong = [] // 每日推荐歌曲
   @action queryRecommendSong = async () => {
@@ -22,9 +23,11 @@ class Table {
     shareCount: 0
   }
   @action queryPlaylist = async (id:string) => {
+    Toast.show('加载中')
     const { code, playlist } = await get('/api/playlist/detail', {
       id
     })
+    Toast.close() 
     if(code == 200){
       runInAction(() => {
         this.playlist = {

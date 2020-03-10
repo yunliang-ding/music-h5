@@ -15,6 +15,10 @@ const $:any = document.querySelector.bind(document)
 const Window: any = window
 const { Swiper } = Window
 const PullRefreshMapping = {
+  '#/home': 'home',
+  '#/discovery': 'discovery',
+  '#/towns': 'towns',
+  '#/video': 'video',
   '#/album': 'album-div1',
   '#/playlist': 'playlist-div1'
 }

@@ -22,6 +22,7 @@ class PullRefresh extends React.Component<any, any> {
   touchmove = (e) => {
     let { element } = this.props
     let elementDom = $(element) || $('.mobile_pull_refresh')
+    console.log(elementDom.scrollTop, elementDom.scrollTop === 0)
     if(e.targetTouches.length > 0 && elementDom.scrollTop === 0 && Math.abs(e.touches[0].pageX - this.startX) < 40){
       this.end = e.touches[0].pageY - this.start
       this.end = this.end > 120 ? 120 : this.end
