@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ActionSheet } from '../../mobile/actionSheet/index'
+import { ActionSheet } from '../../mobile'
 const data = [
   {
     "trackCount": 104,
@@ -54,7 +54,7 @@ class Div4 extends React.Component<any, any> {
         <i className='iconfont icon-gengduo-copy' onClick={
           () => {
             this.setState({
-              actionSheetShow:true
+              actionSheetShow: true
             })
           }
         }></i>
@@ -77,18 +77,24 @@ class Div4 extends React.Component<any, any> {
           })
         }
       </div>
-      <ActionSheet show={actionSheetShow} menus={
+      <ActionSheet close={
+        () => {
+          this.setState({
+            actionSheetShow: false
+          })
+        }
+      } show={actionSheetShow} menus={
         [{
           key: Math.random(),
           label: '创建新歌单',
-          icon: <i className='iconfont icon-jia' style={{color:'#5c5c5c', fontSize:20}}></i>,
-          click:(e) => {
+          icon: <i className='iconfont icon-jia' style={{ color: '#5c5c5c', fontSize: 20 }}></i>,
+          click: (e) => {
           }
-        },{
+        }, {
           key: Math.random(),
           label: '歌单管理',
-          icon: <i className='iconfont icon-guanli' style={{color:'#5c5c5c', fontSize:22}}></i>,
-          click:(e) => {
+          icon: <i className='iconfont icon-guanli' style={{ color: '#5c5c5c', fontSize: 22 }}></i>,
+          click: (e) => {
           }
         }]
       } />

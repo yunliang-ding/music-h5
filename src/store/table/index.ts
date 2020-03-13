@@ -4,7 +4,9 @@ import { Toast } from '../../mobile'
 class Table {
   @observable recommendSong = [] // 每日推荐歌曲
   @action queryRecommendSong = async () => {
+    Toast.show('加载中')
     const { code, recommend } = await get('/api/recommend/songs', {})
+    Toast.close() 
     if(code == 200){
       runInAction(() => {
         this.recommendSong = recommend

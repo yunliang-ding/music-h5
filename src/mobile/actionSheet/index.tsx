@@ -13,6 +13,7 @@ class ActionSheet extends React.Component<any, any> {
   }
   closeActionSheet = () => {
     $('.mobile-action-sheet-container').remove()
+    this.props.close &&  this.props.close()
   }
   renderActionSheet() {
     const {
