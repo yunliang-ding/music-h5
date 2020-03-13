@@ -1,6 +1,7 @@
 import * as React from "react"
 import { observer, inject } from 'mobx-react'
 import { Audio } from './audio'
+import { Progress } from '../../mobile'
 import './index.less'
 @inject('UI', 'Song')
 @observer
@@ -31,11 +32,16 @@ class Footer extends React.Component<any, any> {
         <span className='app-footer-song-lyrics'>{artist || '.....'}</span>
       </div>
       <div className='app-footer-tools'>
-        <i className={playing ? 'iconfont bf icon-zantingxianxing' : 'iconfont bf icon-bofang3'} onClick={
-          () => {
-            setSongByKey('playing', !playing)
-          }
-        }></i>
+        <Progress progress={progress/dt * 100 * 3.6} style={{
+          width: 30,
+          height: 30
+        }}>
+          <i className={playing ? 'iconfont bf icon-zantingxianxing' : 'iconfont bf icon-bofang3'} onClick={
+            () => {
+              setSongByKey('playing', !playing)
+            }
+          }></i>
+        </Progress>
         <i className='iconfont icon-cebianlan'></i>
       </div>
       <Audio playing={playing} />
