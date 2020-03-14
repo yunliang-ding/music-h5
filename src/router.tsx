@@ -7,6 +7,7 @@ import { Towns } from './components/towns/index'
 import { Video } from './components/video/index'
 import { Album } from './components/album/index'
 import { Playlist } from './components/playlist/index'
+import { Login } from './components/login/index'
 class AppRouter extends React.Component {
   render() {
     return (
@@ -21,6 +22,7 @@ class AppRouter extends React.Component {
           <Route path='album' component={Album} />
           <Route path='playlist' component={Playlist} />
         </Route>
+        <Route path='/login' component={Login} />
       </Router>
     )
   }

@@ -4,11 +4,13 @@ import { Loading } from './loading/index'
 import { Alert } from './alert/index'
 import { Toast } from './toast/index'
 import { Progress } from './progress/index'
+import { Drawer } from './drawer/index'
 export {
   ActionSheet,  
   PullRefresh,
   Loading,
   Alert,
   Toast,
-  Progress
+  Progress,
+  Drawer
 }
