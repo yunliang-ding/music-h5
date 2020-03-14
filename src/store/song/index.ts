@@ -16,24 +16,26 @@ class Song {
   @action setSong = (song) => {
     this.song.id = song.id
     this.song.name = song.name
-    this.song.artist = song.ar.map(_item=>{return _item.name}).join('/')
+    this.song.artist = song.ar.map(_item => { return _item.name }).join('/')
     this.song.playing = true
     this.song.dt = song.dt
     this.song.url = song.url
     this.song.picUrl = song.al.picUrl
-    this.song.lyric = ''
+    this.song.lyric = song.lyric
     this.song.progress = 0
     this.song.comment = []
-    this.song = {...this.song} // render
+    this.song = { ...this.song } // render
   }
   @action setSongByKey = (key, value) => {
     this.song[key] = value
   }
   @action playSong = async (songId: string) => {
     const song = await this.querySongDetailById(songId)
-    if(song){
+    if (song) {
       const url = await this.querySongUrlById(songId)
+      const lyric = await this.querylyricUrlById(songId)
       song.url = url
+      song.lyric = lyric
       this.setSong(song)
     }
   }
@@ -52,6 +54,15 @@ class Song {
     })
     if (code == 200) {
       return data[0].url
+    }
+    return null
+  }
+  @action querylyricUrlById = async (id: string) => {
+    const { code, lrc } = await get(`/api/lyric`, {
+      id
+    })
+    if (code == 200) {
+      return lrc.lyric && lrc.lyric.replace(/↵/g, "").replace(/\n/g, "#*#")
     }
     return null
   }
