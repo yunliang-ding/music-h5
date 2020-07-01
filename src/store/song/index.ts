@@ -62,7 +62,7 @@ class Song {
       id
     })
     if (code == 200) {
-      return lrc.lyric && lrc.lyric.replace(/↵/g, "").replace(/\n/g, "#*#")
+      return lrc && lrc.lyric && lrc.lyric.replace(/↵/g, "").replace(/\n/g, "#*#")
     }
     return null
   }
